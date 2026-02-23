@@ -4,12 +4,14 @@ import InitialPage from './templates/InitialPage.jsx';
 import Locals from './templates/Locals';
 import Gastos from './templates/gastos';
 import DadosApi from '../Apis/weatherService.jsx';
+import WeatherCalendar from './components/componentsWeather/WeatherCalendar.jsx';
+import Clima from './templates/Clima.jsx';
 
 
 function App() {
   return (
 
-    <Home/>
+    <Clima/>
 
     // <BrowserRouter>
     //   <Routes>

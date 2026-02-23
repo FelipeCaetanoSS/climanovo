@@ -3,7 +3,6 @@ import Footer from '../components/Footer';
 import { useState } from "react";
 import { weatherApi } from "../../Apis/weatherService.js";
 
-
 function Gastos() {
   return (
     <div>

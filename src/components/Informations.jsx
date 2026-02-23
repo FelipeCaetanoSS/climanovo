@@ -1,21 +1,40 @@
 import { FaTaxi, FaMoneyBillWave } from "react-icons/fa";
 import ClimaIcon from "./componentsWeather/ClimaIcon.jsx";
+import { useNavigate } from "react-router-dom";
 
-function Informations(){
-    return(
-        <div className="items-center flex flex-col bg-white p-6 rounded-3xl shadow-sm border border-slate-100">
-          <ClimaIcon/>
-          <div className="flex flex-1/3">
-            <FaMoneyBillWave className="text-green-600 w-12 h-12" />
-            <span className="text-xl font-light">R$250</span>
-          </div>
-          <div className="flex flex-1/3">
-            <FaTaxi className="text-gray-600 w-12 h-12" />
-            <span className="text-xl font-light">25 min</span>
-          </div>
-          
-        </div>
-    );
+function Informations() {
+
+  const navigate = useNavigate();
+
+  return (
+    <div className="flex justify-around items-center bg-white p-6 rounded-3xl shadow-sm border border-slate-100 w-full max-w-md mx-auto">
+
+      {/* 🌤 CLIMA */}
+      <div 
+        onClick={() => navigate("/clima")}
+        className="flex flex-col items-center cursor-pointer hover:scale-110 transition"
+      >
+        <ClimaIcon />
+        <span className="text-sm text-slate-600 mt-2">Clima</span>
+      </div>
+
+      {/* 💰 GASTOS */}
+      <div 
+        onClick={() => navigate("/gastos")}
+        className="flex flex-col items-center cursor-pointer hover:scale-110 transition"
+      >
+        <FaMoneyBillWave className="text-green-600 w-10 h-10" />
+        <span className="text-xl font-light mt-1">R$250</span>
+      </div>
+
+      {/* 🚕 TEMPO */}
+      <div className="flex flex-col items-center hover:scale-110 transition">
+        <FaTaxi className="text-gray-600 w-10 h-10" />
+        <span className="text-xl font-light mt-1">25 min</span>
+      </div>
+
+    </div>
+  );
 }
 
-export default Informations
+export default Informations;
