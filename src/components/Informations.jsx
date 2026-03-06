@@ -2,7 +2,7 @@ import { FaTaxi, FaMoneyBillWave } from "react-icons/fa";
 import ClimaIcon from "./componentsWeather/ClimaIcon.jsx";
 import { useNavigate } from "react-router-dom";
 
-function Informations({icon, temp}) {
+function Informations() {
 
   //const navigate = useNavigate();
 
@@ -11,7 +11,7 @@ function Informations({icon, temp}) {
 
       <div className="flex flex-col items-center cursor-pointer hover:scale-115 transition"
         onClick={() => navigate("/clima")}>
-        <ClimaIcon icon={icon} temp={temp}/>
+        <ClimaIcon/>
       </div>
 
       <div className="flex flex-col items-center cursor-pointer hover:scale-110 transition"

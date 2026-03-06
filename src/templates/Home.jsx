@@ -4,16 +4,10 @@ import Footer from '../components/Footer';
 import Informations from '../components/Informations';
 import TouristPoints from '../components/TouristPoints';
 import { useState } from 'react';
-import { weatherApi } from '../Services/weatherService.js'
+import { useWeatherCity } from '../Services/weatherContext.jsx';
 
 function Home() {
-  const [city, setCity] = useState(null);
-
-async function getData(){
-    const temp = await weatherApi.getCity();
-    const icon = await weatherApi.getCity();
-    setCity(weatherApi.getCity());
-  }
+  const {city} = useWeatherCity();
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -25,7 +19,7 @@ async function getData(){
       <h1>{city}</h1>
       </div>
       <TouristPoints/>
-      <Informations icon={icon} temp={temp}/>
+      <Informations />
       </main>
       <Footer />
     </div>

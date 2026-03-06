@@ -5,11 +5,13 @@ import Locals from './templates/Locals.jsx';
 import Gastos from './templates/Gastos.jsx';
 import WeatherCalendar from './components/componentsWeather/WeatherCalendar.jsx';
 import Clima from './templates/Clima.jsx';
+import { WeatherProvider } from  './Services/weatherContext.jsx'
 
 function App() {
   return (
-
-    <Clima/>
+    <WeatherProvider>
+    <Home/>
+    </WeatherProvider>
 
     // <BrowserRouter>
     //   <Routes>

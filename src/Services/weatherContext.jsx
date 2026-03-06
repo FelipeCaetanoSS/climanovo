@@ -1,22 +1,24 @@
 import { createContext, useState, useContext } from 'react';
+import { weatherApi } from './weatherService';
 
-const weatherContext = createContext({});
+const WeatherContext = createContext({});
 
-export function weatherProvider({ children }){
-    const [{city, setCity}] = useState("");
+export function WeatherProvider({ children }){
+    const [city, setCity] = useState("");
 
-    function getData(data){
+    function getData(){
+        const data = weatherApi.getCity();
         setCity(data);
     }
 
     return (
-    <weatherContext.weatherProvider value={{ city, getData}}>
+    <WeatherContext.Provider value={{ city, getData}}>
         {children}
-    </weatherContext.weatherProvider>
+    </WeatherContext.Provider>
     );
 }
 
-export function weatherData(){
-    const context = useContext(weatherContext);
-    return context
+export function useWeatherCity(){
+    const context = useContext(WeatherContext);
+    return context;
 }
