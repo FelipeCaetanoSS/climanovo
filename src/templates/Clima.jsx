@@ -43,10 +43,8 @@ function Clima() {
 
         <div className="px-6 pt-6 pb-8">
 
-          {/* 🔥 ALTERAÇÃO AQUI */}
           <div className="flex justify-between items-center max-w-4xl mx-auto">
 
-            {/* Ícone + Temperatura */}
             <div className="flex items-center gap-4">
               <ClimaIcon />
               {weather && (
@@ -56,7 +54,6 @@ function Clima() {
               )}
             </div>
 
-            {/* Cidade + Data */}
             <div 
               onClick={() => setOpenCalendar(true)}
               className="flex items-center gap-2 cursor-pointer hover:scale-105 transition"
@@ -79,7 +76,6 @@ function Clima() {
 
           </div>
 
-          {/* Infos extras */}
           {weather && (
             <div className="mt-6 text-center text-slate-700 text-sm space-y-1">
               <p>🌧 Chuva: {weather?.clouds?.all}%</p>
@@ -90,7 +86,6 @@ function Clima() {
 
         </div>
 
-        {/* Descrição */}
         <div className="bg-white mx-6 mt-6 p-6 rounded-3xl shadow-lg text-slate-700 text-center">
           <p>
             O dia {selectedDate.getDate()} está com temperatura de{" "}
@@ -103,7 +98,6 @@ function Clima() {
 
       <Footer />
 
-      {/* Modal Calendário */}
       {openCalendar && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded-3xl shadow-xl">

@@ -9,7 +9,7 @@ import Clima from './templates/Clima.jsx';
 function App() {
   return (
 
-    <Home/>
+    <Clima/>
 
     // <BrowserRouter>
     //   <Routes>
