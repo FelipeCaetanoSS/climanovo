@@ -1,8 +1,13 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
 function Header() {
   const [date, setDate] = useState("");
+  const navigate = useNavigate();
 
+  function onClick() {
+    navigate("/home");
+  }
   useEffect(() => {
     const reloadTime = () => {
       const now = new Date();
@@ -20,10 +25,7 @@ function Header() {
       });
 
       const resultado =
-        dateTime.charAt(0).toUpperCase() +
-        dateTime.slice(1) +
-        " - " +
-        time;
+        dateTime.charAt(0).toUpperCase() + dateTime.slice(1) + " - " + time;
 
       setDate(resultado);
     };
@@ -37,7 +39,10 @@ function Header() {
   return (
     <header className="w-full bg-white/80 backdrop-blur-md shadow-sm sticky flex flex-col md:flex-row justify-between items-center px-6 md:px-12 py-4 md:h-24 transition-all border-b border-slate-200">
       <div className="flex items-center gap-3">
-        <h1 className="text-xl md:text-2xl text-sky-900 font-extrabold tracking-tight">
+        <h1
+          className="text-xl md:text-2xl text-sky-900 font-extrabold tracking-tight"
+          onClick={onClick}
+        >
           Sistema Clima
         </h1>
       </div>

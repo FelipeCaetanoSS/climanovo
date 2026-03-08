@@ -1,13 +1,20 @@
 import { useState } from "react";
 import { useWeatherCity } from "../services/weatherContext";
 import Toast from "./toast";
+import { useNavigate } from "react-router";
 
 function InputSearch() {
   const [city, setCity] = useState("");
   const { searchWeather, error } = useWeatherCity();
+  const navigate = useNavigate();
 
   function search(){
     searchWeather(city);
+    if (city) {
+      navigate("/home");
+    } else {
+      return;
+    }
   };
 
   return (
@@ -31,6 +38,7 @@ function InputSearch() {
         <button
           className="h-full px-5 bg-gray-500 hover:bg-gray-600 text-white text-sm font-medium transition-colors"
           onClick={search}
+          
         >
           Buscar
         </button>
