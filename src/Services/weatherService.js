@@ -4,6 +4,10 @@ import { z } from 'zod';
 export const weatherSchema = z.object({
   current: z.object({
     temp_c: z.number(),
+    condition: z.object({
+    text: z.string(),
+    icon: z.string(),
+    }),
   }),
   forecast: z.object({
     forecastday: z.array(
@@ -27,8 +31,8 @@ export const weatherSchema = z.object({
   const forecast = data.forecast.forecastday[0].day;
 
   return {
-    iconCityRt: forecast.condition.icon,
-    textRt: forecast.condition.text,
+    iconCityRt: data.current.condition.icon,
+    textRt: data.current.condition.text,
     tempRealTime: data.current.temp_c,
     tempMin: forecast.mintemp_c,
     tempMax: forecast.maxtemp_c,
