@@ -1,12 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
-import RootLayout from "../RootLayout";
-import InitialPage from "../../templates/InitialPage";
-import Home from "../../templates/Home";
-import Clima from "../../templates/Clima";
-import Gastos from "../../templates/Gastos";
-import Distance from "../../templates/Distance";
-import Locals from "../../templates/Locals";
-import NotFound from "../../templates/NotFound";
+import RootLayout from "../layouts/RootLayout";
+import InitialPage from "../templates/InitialPage";
+import Home from "../templates/Home";
+import Clima from "../templates/Clima";
+import Gastos from "../templates/Gastos";
+import Distance from "../templates/Distance";
+import Locals from "../templates/Locals";
+import NotFound from "../templates/NotFound";
 
 export const router = createBrowserRouter([
   {
