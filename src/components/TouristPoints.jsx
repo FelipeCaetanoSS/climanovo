@@ -9,7 +9,7 @@ function TouristPoints() {
       
       <div className="flex-1 flex flex-col items-center p-8">
         <div className="p-12 rounded-xl shadow-sm border border-slate-100">
-          <Link to="/locals">
+          <Link to="/locais">
           <h2 className="text-xl font-bold mb-4">Locais Populares</h2>
           <div className="space-y-4">
             <div className="flex items-center gap-4 p-2 hover:bg-slate-50 rounded-xl transition-all cursor-pointer">

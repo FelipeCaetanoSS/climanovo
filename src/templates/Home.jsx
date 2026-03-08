@@ -1,9 +1,6 @@
-import Header from "../components/Header";
 import InputSearch from "../components/InputSearch";
-import Footer from "../components/Footer";
 import Informations from "../components/Informations";
 import TouristPoints from "../components/TouristPoints";
-import { useState } from "react";
 import { useWeatherCity } from "../services/weatherContext.jsx";
 
 function Home() {
@@ -11,7 +8,6 @@ function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
       <main className="flex-1">
         <InputSearch />
         <div className="itens-center text-center">
@@ -20,7 +16,6 @@ function Home() {
         <TouristPoints />
         <Informations />
       </main>
-      <Footer />
     </div>
   );
 }

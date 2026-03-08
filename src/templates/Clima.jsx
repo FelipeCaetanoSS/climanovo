@@ -1,5 +1,3 @@
-import Footer from "../components/Footer.jsx";
-import Header from "../components/Header.jsx";
 import ClimaIcon from "../components/componentsWeather/ClimaIcon.jsx";
 import WeatherCalendar from "../components/componentsWeather/WeatherCalendar";
 import { useState, useEffect } from "react";
@@ -17,7 +15,6 @@ function Clima() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
 
       <main className="flex-1">
         <div className="px-6 pt-6 pb-8">
@@ -71,8 +68,6 @@ function Clima() {
           </div>
         )}
       </main>
-
-      <Footer />
 
       {openCalendar && (
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">

@@ -1,8 +1,10 @@
+import { FaTaxi } from "react-icons/fa";
 
-function Gastos() {
+function Distance() {
   return (
     <div>
-      <div className="flex flex-1/3">
+    <div className="flex flex-1/3">
+    <FaTaxi className="text-gray-600 w-12 h-12" />
         <span className="text-xl font-light">Layout de gastos</span>
       </div>
       <div className="flex flex-1/3">
@@ -14,4 +16,4 @@ function Gastos() {
   );
 }
 
-export default Gastos;
+export default Distance;

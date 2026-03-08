@@ -1,4 +1,3 @@
-// src/templates/NotFound.jsx (ou PaginaNaoEncontrada.jsx)
 import { Link } from "react-router-dom";
 
 function NotFound() {

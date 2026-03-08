@@ -1,11 +1,8 @@
-import Header from "../components/Header";
 import InputSearch from "../components/InputSearch";
-import Footer from "../components/Footer";
 
 function InitialPage() {
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
       <main className="flex-1">
         <div className="text-center space-y-4 mt-8">
           <h1 className="text-4xl font-extrabold text-slate-800 tracking-tight drop-shadow-sm">
@@ -31,7 +28,6 @@ function InitialPage() {
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }
