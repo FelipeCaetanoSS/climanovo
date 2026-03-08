@@ -3,26 +3,23 @@ import Header from "../components/Header.jsx";
 import ClimaIcon from "../components/componentsWeather/ClimaIcon.jsx";
 import WeatherCalendar from "../components/componentsWeather/WeatherCalendar";
 import { useState, useEffect } from "react";
-import { weatherApi } from "../services/weatherService.js";
 import { CalendarDays } from "lucide-react";
+import { useWeatherCity } from "../services/weatherContext.jsx"; 
 
 function Clima() {
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [weather, setWeather] = useState(null);
   const [openCalendar, setOpenCalendar] = useState(false);
-
+  const { weatherData } = useWeatherCity();
   useEffect(() => {
     async function fetchWeather() {
       try {
-        const data = await weatherApi("Londrina");
-
+      
         const selectedDay = selectedDate.toISOString().split("T")[0];
 
         const filtered = data.list.find((item) =>
           item.dt_txt.includes(selectedDay + " 12:00:00"),
         );
 
-        setWeather(filtered);
       } catch (error) {
         console.error("Erro ao buscar clima:", error);
       }
@@ -40,11 +37,6 @@ function Clima() {
           <div className="flex justify-between items-center max-w-4xl mx-auto">
             <div className="flex items-center gap-4">
               <ClimaIcon />
-              {weather && (
-                <h1 className="text-4xl font-bold text-slate-800">
-                  {Math.round(weather?.main?.temp)}°C
-                </h1>
-              )}
             </div>
 
             <div
@@ -66,19 +58,20 @@ function Clima() {
             </div>
           </div>
 
-          {weather && (
             <div className="mt-6 text-center text-slate-700 text-sm space-y-1">
-              <p>🌧 Chuva: {weather?.clouds?.all}%</p>
-              <p>💧 Umidade: {weather?.main?.humidity}%</p>
-              <p>🌬 Vento: {weather?.wind?.speed} km/h</p>
+              <p>Chuva: {weatherData.forecast.chanceOfRain}%</p>
+              <p>Umidade: {weatherData.forecast.humidity}%</p>
+              <p>Vento: {Math.round(weatherData.forecast.windSpeed)} km/h</p>
+              <p>Temp Max: {Math.round(weatherData.forecast.max)}°C</p>
+              <p>Temp Min: {Math.round(weatherData.forecast.min)}°C</p>
             </div>
-          )}
+          
         </div>
 
         <div className="bg-white mx-6 mt-6 p-6 rounded-3xl shadow-lg text-slate-700 text-center">
           <p>
             O dia {selectedDate.getDate()} está com temperatura de{" "}
-            {weather && Math.round(weather?.main?.temp)}°C. Clima ideal para
+            {Math.round(weatherData.tempRealTime)}°C. Clima ideal para
             atividades ao ar livre.
           </p>
         </div>

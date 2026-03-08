@@ -1,32 +1,24 @@
 import { useEffect, useState } from "react";
-import { weatherApi } from "../../services/weatherService.js";
 import { useWeatherCity } from "../../services/weatherContext.jsx";
 
 function ClimaIcon() {
   const [icon, setIcon] = useState(null);
-  const [temp, setTemp] = useState("");
-  const city = useWeatherCity();
+  const [temp, setTemp] = useState(null);
+  const { city, weatherData } = useWeatherCity();
 
   useEffect(() => {
     async function getData() {
-      if (!city) return;
-
-      const iconRt = await weatherApi.iconCityRt;
-      const tempRt = await weatherApi.tempRealTime;
-
-      if (city !== null) {
-        if (iconRt !== null) {
-          setIcon(iconRt);
-        } else {
-          const image = "";
-          setIcon(image);
-        }
-        if (tempRt !== null) {
-          setTemp(tempRt);
-        } else {
-          const t = 27;
-          setTemp(t);
-        }
+      if (city !== null){
+        const iconApi = weatherData.iconCityRt;
+        const tempApi = weatherData.tempRealTime;
+        setIcon(iconApi);
+        setTemp(tempApi);
+        return;
+      }else{
+        const iconFixed = "";
+        const tempFixed = 27;
+        setIcon(iconFixed);
+        setTemp(tempFixed);
       }
     }
     getData();
@@ -35,11 +27,11 @@ function ClimaIcon() {
   return (
     <>
       <img
-        src={!icon ? `https:${icon}` : icon}
+        src={`https:${icon}`}
         alt="Icone Clima"
         className="w-16 h-16"
       />
-      <p className="text-gray-600 capitalize">{temp}°C</p>
+      <p className="text-gray-600 capitalize">{Math.round(temp)}°C</p>
     </>
   );
 }
