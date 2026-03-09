@@ -1,6 +1,6 @@
 import { Utensils } from "lucide-react";
 import { useState } from "react";
-import { weatherApi } from "../services/weatherService.js";
+import { weatherApi } from "../services/weather/weatherService.js";
 import { Link } from "react-router";
 
 function TouristPoints() {

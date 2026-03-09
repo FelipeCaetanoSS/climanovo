@@ -2,7 +2,7 @@ import ClimaIcon from "../components/componentsWeather/ClimaIcon.jsx";
 import WeatherCalendar from "../components/componentsWeather/WeatherCalendar";
 import { useState, useEffect } from "react";
 import { CalendarDays } from "lucide-react";
-import { useWeatherCity } from "../services/weatherContext.js";
+import { useWeatherCity } from "../services/weatherContext.jsx";
 
 function Clima() {
   const [selectedDate, setSelectedDate] = useState(new Date());

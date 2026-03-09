@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { useWeatherCity } from "../../services/weatherContext.js";
+import { useWeatherCity } from "../../services/weatherContext.jsx";
 
 function ClimaIcon() {
   const [icon, setIcon] = useState(null);
   const [temp, setTemp] = useState(null);
   const { city, weatherData } = useWeatherCity();
-
+//  corrigir aqui - fazer vericação do icone fixo ou pegar da api
   useEffect(() => {
     async function getData() {
       if (city !== null) {
