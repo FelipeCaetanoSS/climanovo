@@ -1,7 +1,7 @@
 import InputSearch from "../components/InputSearch";
 import Informations from "../components/Informations";
 import TouristPoints from "../components/TouristPoints";
-import { useWeatherCity } from "../services/weatherContext.jsx";
+import { useWeatherCity } from "../services/weather/weatherContext.jsx";
 
 function Home() {
   const { city } = useWeatherCity();

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useWeatherCity } from "../../services/weatherContext.jsx";
+import { useWeatherCity } from "../../services/weather/weatherContext.jsx";
 
 function ClimaIcon() {
   const [icon, setIcon] = useState(null);
