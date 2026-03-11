@@ -1,6 +1,7 @@
 import { createContext, useState, useContext } from 'react';
-import { weatherApi } from './weatherService';
 import { useEffect } from 'react';
+import { weatherApi } from './weatherService';
+import { touristPointsApi } from '../touristPoints/touristPointsService';
 
 const WeatherContext = createContext({});
 
@@ -10,7 +11,7 @@ export function WeatherProvider({ children }){
     const [loading, setLoading] = useState(null);
     const [error, setError] = useState(null);
 
-if (city == null) {
+if (city === null) {
     const lastCity = localStorage.getItem('lastCity');
     setCity(lastCity);
 }
@@ -20,22 +21,27 @@ if (city == null) {
         localStorage.setItem('lastCity', {city});
     }
     
-     useEffect(() => {
+    useEffect(() => {
         if (!city) return;
-
         const fetchWeather = async () => {
             setLoading(true);
-            setError(null);
-            try {
-                const data = await weatherApi.setCity(city);
-                setWeatherData(data);
-            } catch (error) {
-                setWeatherData(null);
-                setError("Não foi possível encontrar a cidade.");
-                console.error("Erro context: ",error);
-            } finally {
-                setLoading(false);
+
+            const responseWeather = await weatherApi.setCity(city);
+            const dataWeather = responseWeather.json();
+            const responseLocals = await touristPointsApi.request();
+            const dataLocals = responseLocals.json();
+            setLoading(false);
+
+            if(!dataWeather){
+            setError("Não foi possível encontrar a cidade.");
+            exit;
             }
+            if(!dataLocals){
+            setError("Não foi possível encontrar os pontos turisticos.");
+            exit;
+            }
+            setWeatherData(dataWeather);
+            setWeatherLocals(dataLocals);
         };
 
         fetchWeather();

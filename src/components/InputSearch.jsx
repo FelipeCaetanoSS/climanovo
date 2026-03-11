@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useWeatherCity } from "../services/weather/weatherContext";
 import Toast from "./Toast";
 import { useNavigate } from "react-router";
+import { touristPointsApi } from "../services/touristPoints/touristPointsService"
 
 function InputSearch() {
   const [city, setCity] = useState("");
@@ -9,6 +10,7 @@ function InputSearch() {
   const navigate = useNavigate();
 
   function search() {
+    touristPointsApi.request(city);
     searchWeather(city);
     if (city) {
       navigate("/home");
